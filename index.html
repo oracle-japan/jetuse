@@ -6205,6 +6205,285 @@
         font-size: 12px;
       }
     }
+
+    /* Align the Recommended, Discovery, and Next Step sections. */
+    body.home-view .home-overview {
+      grid-template-columns: minmax(690px, 0.9fr) minmax(455px, 1.1fr);
+    }
+
+    body.home-view .home-lead {
+      font-size: 15px;
+    }
+
+    body.home-view .home-recommend,
+    body.home-view .home-oci-steps,
+    body.home-view .detail-index {
+      margin-right: calc(50% - 50vw);
+      margin-left: calc(50% - 50vw);
+      padding-right: max(44px, calc((100vw - 1120px) / 2 + 44px));
+      padding-left: max(44px, calc((100vw - 1120px) / 2 + 44px));
+    }
+
+    body.home-view .home-recommend {
+      padding-top: 52px;
+      padding-bottom: 54px;
+    }
+
+    body.home-view .recommend-panel {
+      display: grid;
+      grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
+      gap: clamp(34px, 4vw, 58px);
+      align-items: start;
+    }
+
+    body.home-view .recommend-copy {
+      margin: 0;
+      text-align: left;
+    }
+
+    body.home-view .recommend-panel h2,
+    body.home-view .oci-steps-head h2,
+    body.home-view .detail-index .section-head h2 {
+      margin: 0;
+      color: #1f2a2d;
+      font-size: clamp(28px, 2.5vw, 38px);
+      line-height: 1.25;
+      letter-spacing: 0;
+      word-break: keep-all;
+      text-wrap: balance;
+    }
+
+    body.home-view .recommend-panel .meta,
+    body.home-view .oci-steps-head .meta,
+    body.home-view .detail-index .section-head .meta {
+      margin-bottom: 10px;
+      color: #4d8d82;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    body.home-view .recommend-lead {
+      max-width: 290px;
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: left;
+      text-wrap: pretty;
+    }
+
+    body.home-view .recommend-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    body.home-view .recommend-list li {
+      min-height: 128px;
+      grid-template-columns: 76px minmax(0, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+      align-content: center;
+      justify-items: stretch;
+      padding: 18px 20px;
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    body.home-view .recommend-card-art {
+      width: 76px;
+      height: 72px;
+      align-self: center;
+    }
+
+    body.home-view .recommend-list span {
+      align-self: center;
+    }
+
+    body.home-view .home-oci-steps {
+      padding-top: 52px;
+      padding-bottom: 56px;
+    }
+
+    body.home-view .oci-steps-head {
+      max-width: 820px;
+      margin: 0 0 26px;
+      padding: 0;
+      border-left: 0;
+    }
+
+    body.home-view .oci-steps-head p {
+      margin-top: 12px;
+      color: #384346;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    body.home-view .detail-index {
+      width: auto;
+      max-width: none;
+      padding-top: 52px;
+      padding-bottom: 60px;
+      background: #fbf9f8;
+      border-top: 1px solid rgba(217, 210, 200, 0.82);
+    }
+
+    body.home-view .detail-index .section-head {
+      max-width: 920px;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0 0 26px;
+    }
+
+    body.home-view .detail-index .section-head p {
+      max-width: 920px;
+      color: #384346;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    body.home-view .detail-index .chips {
+      display: none;
+    }
+
+    body.home-view .detail-index .cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    body.home-view .next-step-card {
+      min-height: 220px;
+      overflow: visible;
+      background: rgba(255, 253, 249, 0.98);
+    }
+
+    body.home-view .next-step-card .card-art {
+      display: none;
+    }
+
+    body.home-view .next-step-card .card-body {
+      min-height: 218px;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+    }
+
+    body.home-view .next-step-card .card-body h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 1.45;
+      word-break: keep-all;
+      text-wrap: balance;
+    }
+
+    body.home-view .next-step-card .card-body p {
+      color: #5f625f;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    body.home-view .card-destination {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 18px;
+      color: #315f4c;
+      border-top: 1px solid rgba(217, 210, 200, 0.72);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    body.home-view .card-arrow {
+      width: 30px;
+      height: 30px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: #fff;
+      background: #315f4c;
+      border-radius: 50%;
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    body.home-view .next-step-card:hover .card-arrow,
+    body.home-view .next-step-card:focus-visible .card-arrow {
+      transform: translateX(3px);
+      background: #2d9a83;
+    }
+
+    body.home-view .next-step-card:focus-visible {
+      outline: 3px solid rgba(45, 154, 131, 0.38);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 1240px) {
+      body.home-view .home-overview {
+        grid-template-columns: 1fr;
+      }
+
+      body.home-view .home-lead {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body.home-view .recommend-panel {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      body.home-view .recommend-lead {
+        max-width: 620px;
+      }
+
+      body.home-view .detail-index .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      body.home-view .home-recommend,
+      body.home-view .home-oci-steps,
+      body.home-view .detail-index {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+
+      body.home-view .home-recommend,
+      body.home-view .home-oci-steps {
+        padding-top: 38px;
+        padding-bottom: 42px;
+      }
+
+      body.home-view .detail-index {
+        padding-top: 38px;
+        padding-bottom: 46px;
+      }
+
+      body.home-view .recommend-list,
+      body.home-view .detail-index .cards {
+        grid-template-columns: 1fr;
+      }
+
+      body.home-view .recommend-list li {
+        min-height: 104px;
+        grid-template-columns: 72px minmax(0, 1fr);
+        padding: 14px 16px;
+      }
+
+      body.home-view .next-step-card,
+      body.home-view .next-step-card .card-body {
+        min-height: 0;
+      }
+    }
   </style>
 </head>
 <body class="home-view">
@@ -6357,7 +6636,7 @@
           <div class="recommend-panel">
             <div class="recommend-copy">
               <div>
-                <span class="meta">Discovery</span>
+                <span class="meta">Recommended</span>
                 <h2>こんな方におすすめ</h2>
                 <p class="recommend-lead">最初の一歩で迷いやすい問いを、動く環境で確かめながら整理できます。</p>
               </div>
@@ -6388,6 +6667,7 @@
 
         <section class="home-oci-steps" aria-labelledby="oci-first-step-title">
           <div class="oci-steps-head">
+            <span class="meta">Discovery</span>
             <h2 id="oci-first-step-title">JetUseで進める、OCI活用の第一歩</h2>
             <p>OCIの全体像から構成検討、PoCの準備まで、次のアクションにつながる材料が得られます。</p>
           </div>
@@ -6425,68 +6705,59 @@
         <section class="detail-index" aria-label="サイト案内">
           <div class="section-head">
             <div>
-              <span class="meta">Navigation</span>
-              <h2>目的に合わせて進む</h2>
+              <span class="meta">Next Step</span>
+              <h2>次に見るところを選ぶ</h2>
             </div>
-            <p>概要、デプロイ、作成後の確認、機能紹介、管理、技術情報をこのサイト内で確認できます。</p>
-          </div>
-
-          <div class="chips" aria-label="カテゴリ絞り込み">
-            <button class="chip active" type="button" data-filter="all">すべて</button>
-            <button class="chip" type="button" data-filter="start">概要</button>
-            <button class="chip" type="button" data-filter="deploy">導入</button>
-            <button class="chip" type="button" data-filter="usecase">使い方</button>
-            <button class="chip" type="button" data-filter="manage">管理</button>
-            <button class="chip" type="button" data-filter="tech">技術者向け</button>
+            <p>JetUseの概要、デプロイ、作成後の確認、機能、技術情報をまとめています。はじめての方は「まず全体像をつかむ」から進めてください。</p>
           </div>
 
           <section class="cards" id="articleCards" aria-label="記事カード">
-          <a class="article-card" href="#about" data-tags="start overview jetuse">
-            <div class="card-art"></div>
+          <a class="article-card next-step-card" href="#about" data-tags="start overview jetuse">
             <div class="card-body">
-              <span class="meta">Start</span>
-              <h3>概要と進め方</h3>
-              <p>JetUseの価値と、このサイトで確認できる内容を目的別に把握します。</p>
+              <span class="meta">Overview</span>
+              <h3>まずは概要から全体像を掴む</h3>
+              <p>JetUseでできることや、このサイトで確認できる内容をざっくり把握します。</p>
+              <span class="card-destination"><span>概要ページへ</span><span class="card-arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="article-card" href="#deploy" data-tags="deploy github resource manager terraform">
-            <div class="card-art art-deploy"></div>
+          <a class="article-card next-step-card" href="#deploy" data-tags="deploy github resource manager terraform">
             <div class="card-body">
               <span class="meta">Deploy</span>
-              <h3>デプロイ手順</h3>
-              <p>GitHubからOCI Consoleへ進み、Stack作成、入力値、確認画面までをまとめて進めます。</p>
+              <h3>早速JetUseをデプロイしてみる</h3>
+              <p>GitHubからOCI Consoleへ進み、Resource ManagerでJetUseを作成する手順を確認します。</p>
+              <span class="card-destination"><span>デプロイ手順ページへ</span><span class="card-arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="article-card" href="#data" data-tags="start login firstcheck">
-            <div class="card-art"></div>
+          <a class="article-card next-step-card" href="#items" data-tags="usecase chat rag db minutes agent">
             <div class="card-body">
-              <span class="meta">First Check</span>
-              <h3>作成後の確認</h3>
-              <p>URLを開き、ログインし、チャット送信と履歴保存まで確認します。</p>
+              <span class="meta">Features</span>
+              <h3>JetUseの機能を見てみる</h3>
+              <p>チャット、RAG、DBチャット、議事録、エージェントなど、試せるAI機能を確認します。</p>
+              <span class="card-destination"><span>機能ページへ</span><span class="card-arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="article-card" href="#items" data-tags="usecase chat rag db minutes agent">
-            <div class="card-art art-data"></div>
+          <a class="article-card next-step-card" href="#faq" data-tags="faq help troubleshooting">
             <div class="card-body">
-              <span class="meta">Use</span>
-              <h3>機能紹介</h3>
-              <p>各AI機能で何ができるか、向いている用途、確認ポイントを把握します。</p>
+              <span class="meta">FAQ</span>
+              <h3>よくある質問を見る</h3>
+              <p>よくある質問や、つまずきやすいポイントをまとめています。</p>
+              <span class="card-destination"><span>FAQページへ</span><span class="card-arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="article-card" href="#governance" data-tags="manage security delete cost">
-            <div class="card-art art-architecture"></div>
+          <a class="article-card next-step-card" href="https://github.com/sogawa-yk/jetuse" target="_blank" rel="noopener noreferrer" data-tags="github code readme">
             <div class="card-body">
-              <span class="meta">Manage</span>
-              <h3>安全に試して後片付け</h3>
-              <p>費用、権限、保存データ、削除手順を確認します。</p>
+              <span class="meta">GitHub</span>
+              <h3>GitHubでコードを見る</h3>
+              <p>ソースコード、README、更新内容をGitHubリポジトリで確認できます。</p>
+              <span class="card-destination"><span>GitHubへ</span><span class="card-arrow" aria-hidden="true">↗</span></span>
             </div>
           </a>
-          <a class="article-card" href="#docs" data-tags="tech docs architecture api gateway adb speech functions">
-            <div class="card-art art-architecture"></div>
+          <a class="article-card next-step-card" href="#docs" data-tags="tech docs architecture api gateway adb speech functions">
             <div class="card-body">
               <span class="meta">Documentation</span>
-              <h3>技術詳細ドキュメント</h3>
-              <p>構成、API、OCIリソース、認証、RAG、運用の詳細を確認します。</p>
+              <h3>アーキテクチャや技術詳細を見る</h3>
+              <p>OCIリソース、API、認証、RAG、データ構成、運用上の注意点を確認します。</p>
+              <span class="card-destination"><span>技術ドキュメントへ</span><span class="card-arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
           </section>
