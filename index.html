@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JetUse on OCI | OCI 生成AI・RAG・エージェント活用テンプレート</title>
+  <title>JetUse on OCI | OCIで生成AIを体験するためのスタートガイド</title>
   <meta name="description" content="JetUse on OCI は、OCI の Data &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、翻訳・要約、エージェントを試せる実装テンプレートです。">
   <link rel="canonical" href="https://oracle-japan.github.io/jetuse/">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="JetUse on OCI">
-  <meta property="og:title" content="JetUse on OCI | OCI 生成AI・RAG・エージェント活用テンプレート">
+  <meta property="og:title" content="JetUse on OCI | OCIで生成AIを体験するためのスタートガイド">
   <meta property="og:description" content="JetUse on OCI は、OCI の Data &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、翻訳・要約、エージェントを試せる実装テンプレートです。">
   <meta property="og:url" content="https://oracle-japan.github.io/jetuse/">
   <meta property="og:image" content="https://oracle-japan.github.io/jetuse/assets/ogp.png">
@@ -17,7 +17,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="JetUse on OCIの概要・デプロイ手順・機能紹介">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JetUse on OCI | OCI 生成AI・RAG・エージェント活用テンプレート">
+  <meta name="twitter:title" content="JetUse on OCI | OCIで生成AIを体験するためのスタートガイド">
   <meta name="twitter:description" content="JetUse on OCI は、OCI の Data &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、翻訳・要約、エージェントを試せる実装テンプレートです。">
   <meta name="twitter:image" content="https://oracle-japan.github.io/jetuse/assets/ogp.png">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -3319,6 +3319,7 @@
       font: inherit;
       color: inherit;
       display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
       gap: 16px;
       width: 100%;
       min-height: 252px;
@@ -3361,25 +3362,27 @@
     }
 
     .feature-open-label {
-      width: fit-content;
+      width: 100%;
       margin-top: auto;
       display: inline-flex;
       align-items: center;
+      justify-content: flex-start;
       position: relative;
-      min-height: 28px;
-      padding: 4px 0 4px 27px;
-      color: #9a4f36;
-      background: transparent;
-      border: 0;
-      border-radius: 0;
+      min-height: 42px;
+      padding: 9px 14px 9px 40px;
+      color: #315f4c;
+      background: #f3f8f5;
+      border: 1px solid rgba(95, 151, 160, 0.26);
+      border-radius: 6px;
       font-size: 13px;
       font-weight: 900;
+      transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
     }
 
     .feature-open-label::before {
       content: "";
       position: absolute;
-      left: 2px;
+      left: 14px;
       top: 50%;
       width: 12px;
       height: 12px;
@@ -3391,7 +3394,7 @@
     .feature-open-label::after {
       content: "";
       position: absolute;
-      left: 14px;
+      left: 26px;
       top: calc(50% + 3px);
       width: 8px;
       height: 2px;
@@ -3399,6 +3402,13 @@
       border-radius: 999px;
       transform: rotate(45deg);
       transform-origin: left center;
+    }
+
+    .usecase-action-card:hover .feature-open-label,
+    .usecase-action-card:focus-visible .feature-open-label {
+      color: #25493a;
+      background: #e9f3ef;
+      border-color: rgba(49, 95, 76, 0.38);
     }
 
     .feature-intro {
@@ -3461,15 +3471,17 @@
 
     .feature-help-media {
       display: grid;
-      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      align-items: start;
+      align-items: stretch;
       margin-top: 18px;
     }
 
     .feature-help-figure {
       min-width: 0;
       margin: 0;
+      display: grid;
+      grid-template-rows: 260px auto;
       overflow: hidden;
       background: #fff;
       border: 1px solid #d9e4df;
@@ -3478,10 +3490,10 @@
 
     .feature-help-figure img {
       width: 100%;
-      height: auto;
+      height: 260px;
       display: block;
       object-fit: contain;
-      background: #fff;
+      background: #f7faf8;
     }
 
     .feature-help-figure figcaption {
@@ -5708,6 +5720,14 @@
         grid-template-columns: 1fr;
       }
 
+      .feature-help-figure {
+        grid-template-rows: auto auto;
+      }
+
+      .feature-help-figure img {
+        height: auto;
+      }
+
       .feature-modal {
         padding: 14px;
       }
@@ -6822,7 +6842,7 @@
           <div class="section-head">
             <div>
               <span class="meta">Next Step</span>
-              <h2>次に見るところを選ぶ</h2>
+              <h2>まずは気になるところから</h2>
             </div>
             <p>JetUseの概要、デプロイ、作成後の確認、機能、技術情報をまとめています。はじめての方は「まず全体像をつかむ」から進めてください。</p>
           </div>
@@ -7565,7 +7585,7 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
               <p class="lead feature-intro"><span>JetUseでは、OCIのAI関連サービスとOracle Databaseで提供されるAI関連機能を、実際のユースケースに沿って試せます。</span><span>チャット、RAG、DBチャット、議事録、翻訳・要約、Web抽出、OCR、音声、エージェントなどのカードを開くと、「何ができるか」「向いている用途」「確認ポイント」と画面キャプチャを確認できます。</span></p>
               <section class="feature-help-guide" aria-labelledby="feature-help-title">
                 <div class="feature-help-copy">
-                  <span class="feature-help-mark" aria-hidden="true">?</span>
+                  <span class="feature-help-mark" aria-hidden="true">!</span>
                   <div>
                     <h3 id="feature-help-title">JetUseの画面で、利用サービスと構成図を確認できます</h3>
                     <p>JetUseの画面では、各ユースケースや機能名の右にある「？」のヘルプマークをクリックすると、その機能で利用しているOCIサービスやアーキテクチャ（構成図）を確認できます。機能の役割だけでなく、サービス同士がどのように連携しているかも画面上で参照できます。</p>
@@ -7811,7 +7831,7 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
                 </details>
                 <details>
                   <summary>技術構成はどこで確認できますか？</summary>
-                  <p>「技術ドキュメント」で、フロントエンド、API、認証、RAG、ADB、OCIリソース、環境変数、運用上の制約を確認できます。画面操作とデプロイ手順は初心者向けページに分けています。</p>
+                  <p>「技術ドキュメント」で、フロントエンド、API、認証、RAG、ADB、OCIリソース、環境変数、運用上の制約を確認できます。システム全体の構成は、GitHub上の<a class="inline-external-link" href="https://github.com/sogawa-yk/jetuse/blob/main/docs/architecture/system.md" target="_blank" rel="noopener noreferrer">システムアーキテクチャ</a>でも確認できます。画面操作とデプロイ手順は初心者向けページに分けています。</p>
                 </details>
                 <details>
                   <summary>活用支援はどこに相談できますか？</summary>
