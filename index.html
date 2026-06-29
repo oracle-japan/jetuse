@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JetUse on OCI | 生成AIデモ環境の概要・デプロイ手順・機能紹介</title>
-  <meta name="description" content="JetUse（ジェットユース）は、OCIのData &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、エージェントなどを試せる実装テンプレートです。概要、デプロイ手順、作成後の確認、機能紹介、技術ドキュメントをこのサイトで確認できます。">
+  <title>JetUse on OCI | OCI 生成AI・RAG・エージェント活用テンプレート</title>
+  <meta name="description" content="JetUse on OCI は、OCI の Data &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、翻訳・要約、エージェントを試せる実装テンプレートです。">
+  <link rel="canonical" href="https://oracle-japan.github.io/jetuse/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="JetUse on OCI">
-  <meta property="og:title" content="JetUse on OCI | 生成AIデモ環境の概要・デプロイ手順・機能紹介">
-  <meta property="og:description" content="JetUse（ジェットユース）は、OCIのData &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、エージェントなどを試せる実装テンプレートです。概要、デプロイ手順、作成後の確認、機能紹介、技術ドキュメントをこのサイトで確認できます。">
+  <meta property="og:title" content="JetUse on OCI | OCI 生成AI・RAG・エージェント活用テンプレート">
+  <meta property="og:description" content="JetUse on OCI は、OCI の Data &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、翻訳・要約、エージェントを試せる実装テンプレートです。">
+  <meta property="og:url" content="https://oracle-japan.github.io/jetuse/">
+  <meta property="og:image" content="https://oracle-japan.github.io/jetuse/assets/ogp.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="JetUse on OCIの概要・デプロイ手順・機能紹介">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JetUse on OCI | 生成AIデモ環境の概要・デプロイ手順・機能紹介">
-  <meta name="twitter:description" content="JetUse（ジェットユース）は、OCIのData &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、エージェントなどを試せる実装テンプレートです。概要、デプロイ手順、作成後の確認、機能紹介、技術ドキュメントをこのサイトで確認できます。">
-  <!-- GitHub Pagesの公開URLが未確認のため、og:url、og:image、twitter:imageは未設定です。公開URL確定後、assets/ogp.pngを指すhttpsの絶対URLで追加してください。 -->
+  <meta name="twitter:title" content="JetUse on OCI | OCI 生成AI・RAG・エージェント活用テンプレート">
+  <meta name="twitter:description" content="JetUse on OCI は、OCI の Data &amp; AI / 生成AIサービスを使って、チャット、RAG、DBチャット、議事録、翻訳・要約、エージェントを試せる実装テンプレートです。">
+  <meta name="twitter:image" content="https://oracle-japan.github.io/jetuse/assets/ogp.png">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -3361,36 +3365,85 @@
       margin-top: auto;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 8px 12px;
-      color: #244b4e;
-      background: rgba(226, 240, 237, 0.72);
-      border: 1px solid rgba(95, 151, 160, 0.26);
-      border-radius: 999px;
-      font-size: 12px;
+      position: relative;
+      min-height: 28px;
+      padding: 4px 0 4px 27px;
+      color: #9a4f36;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      font-size: 13px;
       font-weight: 900;
     }
 
     .feature-open-label::before {
-      content: "\1F50D";
-      font-size: 12px;
-      line-height: 1;
-      filter: grayscale(1);
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      transform: translateY(-62%);
     }
 
-    .feature-help-note {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin: 20px 0 26px;
-      padding: 14px 16px;
+    .feature-open-label::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: calc(50% + 3px);
+      width: 8px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transform: rotate(45deg);
+      transform-origin: left center;
+    }
+
+    .feature-intro {
+      max-width: 1120px;
+      margin-bottom: 26px;
+      text-wrap: pretty;
+    }
+
+    .feature-intro span {
+      display: block;
+    }
+
+    .feature-intro span + span {
+      margin-top: 7px;
+    }
+
+    .feature-help-guide {
+      margin: 0 0 34px;
+      padding: 20px;
       color: #315f4c;
       background: #eef6f3;
       border: 1px solid #d7e8e2;
       border-radius: 8px;
+    }
+
+    .feature-help-copy {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .feature-help-copy h3 {
+      margin: 0 0 5px;
+      color: #244b4e;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .feature-help-copy p {
+      max-width: 1020px;
+      margin: 0;
+      color: #42615a;
       font-size: 14px;
       font-weight: 700;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     .feature-help-mark {
@@ -3404,6 +3457,41 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 900;
+    }
+
+    .feature-help-media {
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+      gap: 14px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .feature-help-figure {
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #d9e4df;
+      border-radius: 8px;
+    }
+
+    .feature-help-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .feature-help-figure figcaption {
+      padding: 9px 12px 10px;
+      color: #5f6f6b;
+      background: #fffdf9;
+      border-top: 1px solid #e2e9e5;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.6;
     }
 
     .guide-feature-section {
@@ -4229,6 +4317,26 @@
       color: #315f4c;
       background: rgba(238, 246, 243, 0.72);
       border-color: rgba(95, 151, 160, 0.22);
+    }
+
+    body.detail-view:not(.docs-view) details.deploy-step-more,
+    body.detail-view:not(.docs-view) details.deploy-step-more[open] {
+      width: auto;
+      justify-self: start;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    body.detail-view:not(.docs-view) details.deploy-step-more summary {
+      box-shadow: none;
+    }
+
+    body.detail-view:not(.docs-view) details.deploy-step-more .deploy-more-content {
+      background: #f8f5ef;
+      border: 1px solid var(--line);
+      box-shadow: none;
     }
 
     body.detail-view:not(.docs-view) .guide-media-frame {
@@ -5590,6 +5698,14 @@
         height: 44px;
         border-radius: 12px;
         font-size: 16px;
+      }
+
+      .feature-help-guide {
+        padding: 17px;
+      }
+
+      .feature-help-media {
+        grid-template-columns: 1fr;
       }
 
       .feature-modal {
@@ -7094,8 +7210,8 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
             <div class="article-label">デプロイ手順</div>
             <div class="article-content">
               <span class="meta">Deploy to Oracle Cloud</span>
-              <h2>GitHubからResource Managerのスタックを作成する</h2>
-              <p class="lead">GitHub READMEの「Deploy to Oracle Cloud」からOCI Resource Managerを開き、スタックを作成します。ジョブが成功した後は、出力からアプリURLとログイン情報を確認し、最後にチャットが応答するところまで進めます。</p>
+              <h2>JetUseを立ち上げよう</h2>
+              <p class="lead">GitHubのREADMEからOCI Resource Managerを開き、JetUseをOracle Cloud上に構築します。完了後、出力されたアプリURLとログイン情報を確認し、チャットの応答まで確認します。</p>
 
               <section class="deploy-block" aria-labelledby="deploy-prerequisites-title">
                 <div class="section-kicker">
@@ -7274,11 +7390,11 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
                             <h5>コンテナイメージの上書き設定を確認する</h5><p>「APIコンテナイメージ（上書き）」と「Functionsルーターイメージ（上書き）」は通常空欄にします。空欄の場合は、<code>kix.ocir.io/&lt;namespace&gt;/&lt;prefix&gt;-api:latest</code>と<code>kix.ocir.io/&lt;namespace&gt;/&lt;prefix&gt;-fn-router:latest</code>の形式で自動生成されます。既存イメージを使う場合だけ入力し、誤ったパスを指定しないようにします。</p>
                           </div></details>
                         </div>
-                        <figure class="deploy-shot"><img src="assets/deploy-09-next.png" alt="IAM、OpenSearch、APIレート上限、OCIRを設定する詳細オプション画面" width="1545" height="756" loading="lazy"><figcaption>詳細オプションを確認して「Next」へ進む</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-09-next.png" alt="IAM、OpenSearch、APIレート上限、OCIRを設定する詳細オプション画面" width="1920" height="1418" loading="lazy"><figcaption>詳細オプションを確認して「Next」へ進む</figcaption></figure>
                       </div>
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy"><h4>確認画面で「作成」をクリックする</h4><p>入力内容を確認し、問題がなければ「作成」をクリックします。適用の実行が選択されていることも確認します。</p><details class="deploy-step-more"><summary>作成前の最終確認</summary><div class="deploy-more-content"><p>作成先コンパートメント、ADB ADMINパスワード、OpenSearchの有効化、OCIR関連の値を確認します。独自コンテナイメージを使わない場合、上書き欄は空欄のままにします。</p></div></details></div>
-                        <figure class="deploy-shot"><img src="assets/deploy-10-review-create.png" alt="Resource Managerスタックの確認画面と作成ボタン" width="1545" height="756" loading="lazy"><figcaption>内容を確認してスタックを作成</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-10-review-create.png" alt="Resource Managerスタックの確認画面と作成ボタン" width="1920" height="1416" loading="lazy"><figcaption>内容を確認してスタックを作成</figcaption></figure>
                       </div>
                     </div>
                   </section>
@@ -7295,7 +7411,7 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
                           <p>ジョブが完了したら状態を確認し、対象のジョブをクリックして詳細画面を開きます。処理中に画面を閉じても、ジョブは継続します。</p>
                           <details class="deploy-step-more"><summary>ジョブが失敗した場合</summary><div class="deploy-more-content"><p>ジョブログの失敗箇所を開き、権限不足、コンパートメント、リージョンのサービス制限、必須値の未入力を確認します。</p><p>OpenSearchを有効にした場合は、作成時間と費用が増える可能性があります。</p></div></details>
                         </div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="Resource Managerのジョブが成功した画面"><div><strong>対応画像</strong><span>Resource Managerのジョブ一覧と「成功」状態</span></div><figcaption>ジョブの成功を確認して詳細を開く</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-11-job-success.png" alt="OCI Resource Managerでジョブの状態が成功になった画面" width="2992" height="764" loading="lazy"><figcaption>ジョブの成功を確認して詳細を開く</figcaption></figure>
                       </div>
                     </div>
                   </section>
@@ -7308,7 +7424,7 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
                     <div class="deploy-instruction-list">
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy"><h4>ジョブ詳細から「出力」を開く</h4><p>ジョブが成功していることを確認した後、ジョブ詳細画面の「出力」を開きます。</p></div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="Resource Managerのジョブ詳細で出力を開く画面"><div><strong>対応画像</strong><span>Resource Managerのジョブ詳細にある「出力」</span></div><figcaption>ジョブ詳細から「出力」を開く</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-12-job-output.png" alt="OCI Resource Managerのジョブ詳細で出力を開く画面" width="1538" height="748" loading="lazy"><figcaption>ジョブ詳細から「出力」を開く</figcaption></figure>
                       </div>
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy">
@@ -7317,23 +7433,23 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
                           <p class="deploy-wait-note">Autonomous Databaseの作成やデータベース初期化の反映には、少し時間がかかる場合があります。ジョブが成功していてもアクセスできない、または動作が安定しない場合は、すぐ不具合と判断せず、数分待ってから再度アプリURLを開いてください。</p>
                           <details class="deploy-step-more"><summary>出力値を扱うときの注意</summary><div class="deploy-more-content"><p>デモユーザーのパスワードや自動生成されたADB ADMINパスワードを含む出力値は、共有範囲を限定して安全に管理してください。</p></div></details>
                         </div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="Resource Managerの出力に表示されたapp_url"><div><strong>対応画像</strong><span>出力に表示された<code>app_url</code>、<code>demo_username</code>、<code>demo_password</code></span></div><figcaption>アプリURLとログイン情報を確認</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-13-app-url.png" alt="Resource Managerの出力に表示されたapp_urlとログイン情報" width="2398" height="1316" loading="lazy"><figcaption>アプリURLとログイン情報を確認</figcaption></figure>
                       </div>
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy"><h4>デモユーザーでログインする</h4><p>Identity Domainのログイン画面で、出力の<code>demo_username</code>と<code>demo_password</code>を入力してログインします。</p></div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="Identity Domainのログイン画面"><div><strong>対応画像</strong><span>Identity Domainでデモユーザー名とパスワードを入力</span></div><figcaption>デモユーザーでJetUseへログイン</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-14-identity-login.png" alt="Identity Domainでデモユーザー名とパスワードを入力する画面" width="2398" height="1546" loading="lazy"><figcaption>デモユーザーでJetUseへログイン</figcaption></figure>
                       </div>
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy"><h4>JetUseのホーム画面が開くことを確認する</h4><p>ログイン後にJetUseのホーム画面が表示されれば、アプリへのアクセスは完了です。</p></div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="JetUseのホーム画面"><div><strong>対応画像</strong><span>デプロイしたJetUseのホーム画面</span></div><figcaption>JetUseへアクセスできたことを確認</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-15-home.png" alt="デプロイ後に表示されたJetUseのホーム画面" width="2398" height="1546" loading="lazy"><figcaption>JetUseへアクセスできたことを確認</figcaption></figure>
                       </div>
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy"><h4>チャットを開く</h4><p>ホーム画面から「チャット」を開き、短い質問を入力できる状態にします。</p></div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="JetUseでチャットを開く画面"><div><strong>対応画像</strong><span>JetUseのチャット画面を開く操作</span></div><figcaption>チャットを開いて質問を入力</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-16-chat-open.png" alt="JetUseのホーム画面からチャットを開く操作" width="2398" height="1482" loading="lazy"><figcaption>チャットを開いて質問を入力</figcaption></figure>
                       </div>
                       <div class="deploy-instruction-row">
                         <div class="deploy-instruction-copy"><h4>チャットの応答を確認する</h4><p>質問を送信し、回答が表示されることを確認します。1回正常に応答すれば、基本的なデプロイ後確認は完了です。</p></div>
-                        <figure class="deploy-shot deploy-shot-placeholder" role="img" aria-label="JetUseのチャットが応答した画面"><div><strong>対応画像</strong><span>質問に対するチャット回答の表示</span></div><figcaption>チャットが正常に動くことを確認</figcaption></figure>
+                        <figure class="deploy-shot"><img src="assets/deploy-17-chat-response.png" alt="JetUseのチャットで質問に対する回答が表示された画面" width="2398" height="1546" loading="lazy"><figcaption>チャットが正常に動くことを確認</figcaption></figure>
                       </div>
                     </div>
                   </section>
@@ -7446,8 +7562,26 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
             <div class="article-content">
               <span class="meta">Features</span>
               <h2>JetUseで試せるAI機能</h2>
-              <p class="lead">JetUseでは、OCIのAI関連サービスとOracle Databaseで提供されるAI関連機能を、実際のユースケースに沿って試せます。チャット、RAG、DBチャット、議事録、翻訳・要約、Web抽出、OCR、音声、エージェントなどのカードを開くと、「何ができるか」「向いている用途」「確認ポイント」と画面キャプチャを確認できます。</p>
-              <p class="feature-help-note"><span class="feature-help-mark" aria-hidden="true">?</span><span>各機能の名前の右にあるヘルプマークを押すと、その機能で利用しているOCIサービスとアーキテクチャを参照できます。</span></p>
+              <p class="lead feature-intro"><span>JetUseでは、OCIのAI関連サービスとOracle Databaseで提供されるAI関連機能を、実際のユースケースに沿って試せます。</span><span>チャット、RAG、DBチャット、議事録、翻訳・要約、Web抽出、OCR、音声、エージェントなどのカードを開くと、「何ができるか」「向いている用途」「確認ポイント」と画面キャプチャを確認できます。</span></p>
+              <section class="feature-help-guide" aria-labelledby="feature-help-title">
+                <div class="feature-help-copy">
+                  <span class="feature-help-mark" aria-hidden="true">?</span>
+                  <div>
+                    <h3 id="feature-help-title">JetUseの画面で、利用サービスと構成図を確認できます</h3>
+                    <p>JetUseの画面では、各ユースケースや機能名の右にある「？」のヘルプマークをクリックすると、その機能で利用しているOCIサービスやアーキテクチャ（構成図）を確認できます。機能の役割だけでなく、サービス同士がどのように連携しているかも画面上で参照できます。</p>
+                  </div>
+                </div>
+                <div class="feature-help-media">
+                  <figure class="feature-help-figure">
+                    <img src="assets/feature-help-entry-20260629.png" alt="JetUseのRAGチャット画面にあるヘルプマーク" width="936" height="240" loading="lazy">
+                    <figcaption>機能名の右にある「？」をクリックします。</figcaption>
+                  </figure>
+                  <figure class="feature-help-figure">
+                    <img src="assets/feature-help-architecture-20260629.png" alt="RAGチャットで利用するOCIサービスと構成図を表示した画面" width="1946" height="1310" loading="lazy">
+                    <figcaption>機能の説明と、その機能で利用しているOCIサービス・構成図を確認できます。</figcaption>
+                  </figure>
+                </div>
+              </section>
               <section class="guide-feature-section" aria-labelledby="feature-conversation">
                 <div class="guide-feature-heading"><h3 id="feature-conversation">会話・検索</h3><span>Conversation</span></div>
                 <div class="usecase-action-grid">
