@@ -3362,6 +3362,14 @@
       gap: 16px;
     }
 
+    #items .guide-feature-section + .note {
+      margin-top: 36px;
+    }
+
+    #items .note + .guide-next {
+      margin-top: 24px;
+    }
+
     .next-card {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr);
@@ -3677,10 +3685,9 @@
       width: min(1120px, 100%);
       max-height: min(86vh, 900px);
       display: grid;
-      grid-template-columns: 0.78fr 1.22fr;
-      gap: 24px;
+      grid-template-columns: 1fr;
+      gap: 0;
       overflow: auto;
-      padding: 28px;
       background: #fffdf9;
       border: 1px solid rgba(205, 187, 159, 0.74);
       border-radius: 12px;
@@ -3707,8 +3714,8 @@
     .feature-modal-copy {
       display: grid;
       align-content: start;
-      gap: 16px;
-      padding-right: 10px;
+      gap: 12px;
+      padding: 28px 72px 20px 28px;
     }
 
     .feature-modal-copy h2 {
@@ -3723,6 +3730,74 @@
       color: var(--muted);
       font-size: 15px;
       line-height: 1.85;
+    }
+
+    .feature-modal-tablist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 190px));
+      align-items: end;
+      gap: 8px;
+      margin: 0 28px;
+      border-bottom: 1px solid rgba(205, 187, 159, 0.68);
+    }
+
+    .feature-modal-tab {
+      position: relative;
+      min-height: 48px;
+      padding: 0 18px;
+      color: #52605d;
+      background: #f4f2ee;
+      border: 1px solid transparent;
+      border-bottom: 0;
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .feature-modal-tab:hover {
+      color: #1f4840;
+      background: #edf4f1;
+    }
+
+    .feature-modal-tab[aria-selected="true"] {
+      color: #1f4840;
+      background: #fffdf9;
+      border-color: rgba(205, 187, 159, 0.68);
+    }
+
+    .feature-modal-tab[aria-selected="true"]::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 38px;
+      height: 3px;
+      background: #2f7869;
+      border-radius: 999px;
+      transform: translateX(-50%);
+    }
+
+    .feature-modal-tab:focus-visible {
+      z-index: 1;
+      outline: 3px solid rgba(47, 120, 105, 0.24);
+      outline-offset: 2px;
+    }
+
+    .feature-modal-tab-panel {
+      padding: 24px 28px 28px;
+    }
+
+    .feature-modal-tab-panel[hidden] {
+      display: none;
+    }
+
+    .feature-modal-overview {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 24px;
+      align-items: start;
     }
 
     .feature-modal-points {
@@ -3751,11 +3826,134 @@
       line-height: 1.65;
     }
 
+    .feature-modal-architecture {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(220px, 0.7fr);
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      background: #f1f7f4;
+      border: 1px solid rgba(134, 181, 169, 0.48);
+      border-radius: 8px;
+    }
+
+    .feature-modal-architecture[hidden] {
+      display: none;
+    }
+
+    .feature-modal-architecture h3 {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: #1f2a2d;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .feature-architecture-figure {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+    }
+
+    .feature-architecture-button {
+      position: relative;
+      width: 100%;
+      min-height: 280px;
+      padding: 12px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(134, 181, 169, 0.58);
+      border-radius: 7px;
+      cursor: zoom-in;
+    }
+
+    .feature-architecture-button:hover,
+    .feature-architecture-button:focus-visible {
+      outline: none;
+      border-color: #2f7869;
+      box-shadow: 0 0 0 3px rgba(47, 120, 105, 0.14);
+    }
+
+    .feature-architecture-button img {
+      display: block;
+      width: 100%;
+      height: min(46vh, 440px);
+      min-height: 260px;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .feature-architecture-zoom {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      color: #fff;
+      background: rgba(31, 72, 64, 0.92);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .feature-architecture-figure figcaption {
+      color: #62706d;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .feature-architecture-services {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .feature-architecture-services strong {
+      margin: 0;
+      color: #1f2a2d;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .feature-architecture-services ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature-architecture-services li {
+      position: relative;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      padding: 10px 14px 10px 38px;
+      color: #35413f;
+      background: #f1f7f4;
+      border: 1px solid rgba(134, 181, 169, 0.4);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .feature-architecture-services li::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      width: 8px;
+      height: 8px;
+      background: #2f7869;
+      border-radius: 50%;
+    }
+
     .feature-modal-gallery {
       display: grid;
       gap: 14px;
       align-content: start;
-      padding-top: 32px;
     }
 
     .feature-modal-figure {
@@ -5843,14 +6041,39 @@
 
       .feature-modal-panel {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 0;
         max-height: calc(100vh - 28px);
-        padding: 22px;
+        padding: 0;
         border-radius: 10px;
       }
 
       .feature-modal-copy {
-        padding-right: 34px;
+        padding: 22px 54px 18px 20px;
+      }
+
+      .feature-modal-copy h2 {
+        font-size: clamp(28px, 9vw, 40px);
+      }
+
+      .feature-modal-tablist {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        margin: 0 14px;
+      }
+
+      .feature-modal-tab {
+        min-height: 46px;
+        padding: 0 8px;
+        font-size: 12px;
+      }
+
+      .feature-modal-tab-panel {
+        padding: 18px 18px 22px;
+      }
+
+      .feature-modal-overview {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
 
       .feature-modal-gallery {
@@ -5859,6 +6082,23 @@
 
       .feature-modal-figure img {
         max-height: 60vh;
+      }
+
+      .feature-architecture-button {
+        min-height: 190px;
+      }
+
+      .feature-architecture-button img {
+        height: 220px;
+        min-height: 0;
+      }
+
+      .feature-modal-architecture {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-modal-architecture h3 {
+        grid-column: auto;
       }
 
       .next-card {
@@ -7961,9 +8201,31 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
         <span class="meta" id="featureModalMeta">Use Case</span>
         <h2 id="featureModalTitle"></h2>
         <p id="featureModalDescription"></p>
-        <div class="feature-modal-points" id="featureModalPoints"></div>
       </div>
-      <div class="feature-modal-gallery" id="featureModalGallery"></div>
+      <div class="feature-modal-tablist" role="tablist" aria-label="機能詳細の表示切り替え">
+        <button class="feature-modal-tab" id="featureModalOverviewTab" type="button" role="tab" aria-selected="true" aria-controls="featureModalOverviewPanel" tabindex="0" data-feature-tab="overview">概要</button>
+        <button class="feature-modal-tab" id="featureModalArchitectureTab" type="button" role="tab" aria-selected="false" aria-controls="featureModalArchitecturePanel" tabindex="-1" data-feature-tab="architecture">アーキテクチャ</button>
+      </div>
+      <section class="feature-modal-tab-panel feature-modal-overview" id="featureModalOverviewPanel" role="tabpanel" aria-labelledby="featureModalOverviewTab" data-feature-tab-panel="overview">
+        <div class="feature-modal-points" id="featureModalPoints"></div>
+        <div class="feature-modal-gallery" id="featureModalGallery"></div>
+      </section>
+      <section class="feature-modal-tab-panel" id="featureModalArchitecturePanel" role="tabpanel" aria-labelledby="featureModalArchitectureTab" data-feature-tab-panel="architecture" hidden>
+        <div class="feature-modal-architecture" id="featureModalArchitecture" aria-labelledby="featureModalArchitectureTitle">
+          <h3 id="featureModalArchitectureTitle">アーキテクチャ</h3>
+          <figure class="feature-architecture-figure">
+            <button class="feature-architecture-button" id="featureArchitectureButton" type="button" aria-haspopup="dialog">
+              <img id="featureArchitectureImage" src="" alt="">
+              <span class="feature-architecture-zoom">拡大して見る</span>
+            </button>
+            <figcaption id="featureArchitectureCaption"></figcaption>
+          </figure>
+          <div class="feature-architecture-services">
+            <strong>使用サービス</strong>
+            <ul id="featureArchitectureServices"></ul>
+          </div>
+        </div>
+      </section>
     </section>
   </div>
 
@@ -7998,6 +8260,13 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
     const featureModalDescription = document.querySelector("#featureModalDescription");
     const featureModalPoints = document.querySelector("#featureModalPoints");
     const featureModalGallery = document.querySelector("#featureModalGallery");
+    const featureModalArchitecture = document.querySelector("#featureModalArchitecture");
+    const featureArchitectureButton = document.querySelector("#featureArchitectureButton");
+    const featureArchitectureImage = document.querySelector("#featureArchitectureImage");
+    const featureArchitectureCaption = document.querySelector("#featureArchitectureCaption");
+    const featureArchitectureServices = document.querySelector("#featureArchitectureServices");
+    const featureModalTabs = Array.from(document.querySelectorAll("[data-feature-tab]"));
+    const featureModalTabPanels = Array.from(document.querySelectorAll("[data-feature-tab-panel]"));
     const featureModalClose = document.querySelector(".feature-modal-close");
     const featureModalPanel = document.querySelector(".feature-modal-panel");
     const featureModalTriggers = Array.from(document.querySelectorAll(".feature-modal-trigger"));
@@ -8131,6 +8400,98 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
       "利用状況管理": "機能別・モデル別の利用量、トークン、概算コストを把握したい用途。"
     };
 
+    const featureArchitectureByTitle = {
+      "チャット": {
+        src: "assets/usecase-chat.png",
+        alt: "チャットのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "RAGチャット": {
+        src: "assets/usecase-rag.png",
+        alt: "RAGチャットのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI / File Search", "Autonomous Database / Select AI", "Search with OpenSearch", "Object Storage"]
+      },
+      "DBチャット": {
+        src: "assets/usecase-dbchat.png",
+        alt: "DBチャットのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database / Select AI / SQL Search"]
+      },
+      "要約": {
+        src: "assets/usecase-usecase.png",
+        alt: "要約のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "執筆・校閲": {
+        src: "assets/usecase-usecase.png",
+        alt: "執筆・校閲のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "翻訳": {
+        src: "assets/usecase-usecase.png",
+        alt: "翻訳のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "Webコンテンツ抽出": {
+        src: "assets/usecase-usecase.png",
+        alt: "Webコンテンツ抽出のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "ダイアグラム生成": {
+        src: "assets/usecase-usecase.png",
+        alt: "ダイアグラム生成のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "議事録": {
+        src: "assets/usecase-minutes.png",
+        alt: "議事録のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "Object Storage", "OCI Speech", "OCI Generative AI", "Autonomous Database"]
+      },
+      "リアルタイム文字起こし": {
+        src: "assets/usecase-realtime.png",
+        alt: "リアルタイム文字起こしのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Speech", "OCI Generative AI / OCI Language"]
+      },
+      "音声チャット": {
+        src: "assets/usecase-voicechat.png",
+        alt: "音声チャットのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Speech", "OCI Generative AI", "OCI Functions"]
+      },
+      "映像分析": {
+        src: "assets/usecase-video.png",
+        alt: "映像分析のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI（Vision対応モデル）"]
+      },
+      "エージェントを作る・実行する": {
+        src: "assets/usecase-agent.png",
+        alt: "エージェントのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "IAM Identity Domains", "OCI Generative AI Hosted Applications", "Autonomous Database / Select AI Agent"]
+      },
+      "ユースケースを作る・実行する": {
+        src: "assets/usecase-usecase.png",
+        alt: "カスタムユースケースのOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "OCI Generative AI", "Autonomous Database"]
+      },
+      "利用状況管理": {
+        src: "assets/jetuse-oci-architecture.png",
+        alt: "JetUse共通基盤と管理機能のOCIアーキテクチャ構成図",
+        services: ["API Gateway", "Container Instances（FastAPI）", "Autonomous Database", "OCI Logging", "OCI Monitoring"]
+      }
+    };
+
+    function setFeatureModalTab(tabName, moveFocus = false) {
+      featureModalTabs.forEach((tab) => {
+        const isActive = tab.dataset.featureTab === tabName;
+        tab.setAttribute("aria-selected", String(isActive));
+        tab.tabIndex = isActive ? 0 : -1;
+        if (isActive && moveFocus) {
+          tab.focus();
+        }
+      });
+      featureModalTabPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.featureTabPanel !== tabName;
+      });
+    }
+
     function openFeatureModal(trigger) {
       if (!featureModal || !trigger) return;
       lastFeatureTrigger = trigger;
@@ -8139,8 +8500,10 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
       const alts = (trigger.dataset.featureAlts || "").split("||");
       const category = trigger.dataset.featureCategory || "Feature";
       const meta = trigger.dataset.featureMeta || "Use Case";
+      const featureTitle = trigger.dataset.featureTitle || "";
+      const architecture = featureArchitectureByTitle[featureTitle];
 
-      featureModalTitle.textContent = trigger.dataset.featureTitle || "";
+      featureModalTitle.textContent = featureTitle;
       featureModalMeta.textContent = category + " / " + meta;
       featureModalDescription.textContent = trigger.dataset.featureDescription || "";
       if (featureModalPoints) {
@@ -8158,6 +8521,27 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
           item.append(strong, paragraph);
           featureModalPoints.appendChild(item);
         });
+      }
+
+      if (featureModalArchitecture && featureArchitectureButton && featureArchitectureImage && featureArchitectureCaption && featureArchitectureServices) {
+        featureModalArchitecture.hidden = !architecture;
+        featureArchitectureServices.innerHTML = "";
+        if (architecture) {
+          featureArchitectureImage.src = architecture.src;
+          featureArchitectureImage.alt = architecture.alt;
+          featureArchitectureCaption.textContent = architecture.alt;
+          featureArchitectureButton.setAttribute("aria-label", `${architecture.alt}を拡大表示`);
+          architecture.services.forEach((service) => {
+            const item = document.createElement("li");
+            item.textContent = service;
+            featureArchitectureServices.appendChild(item);
+          });
+        } else {
+          featureArchitectureImage.removeAttribute("src");
+          featureArchitectureImage.alt = "";
+          featureArchitectureCaption.textContent = "";
+          featureArchitectureButton.removeAttribute("aria-label");
+        }
       }
       featureModalGallery.innerHTML = "";
 
@@ -8183,6 +8567,7 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
         });
       }
 
+      setFeatureModalTab("overview");
       featureModal.hidden = false;
       document.body.classList.add("modal-open");
       trigger.setAttribute("aria-expanded", "true");
@@ -8234,11 +8619,12 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
 
     function deployGalleryButtonsFor(button) {
       const container =
+        button.closest(".feature-modal-architecture") ||
         button.closest(".deploy-gallery") ||
         button.closest(".guide-media-grid") ||
         button.closest(".deploy-stage-body") ||
         button.parentElement;
-      return Array.from(container.querySelectorAll(".deploy-image-button"));
+      return Array.from(container.querySelectorAll(".deploy-image-button, .feature-architecture-button"));
     }
 
     function updateDeployLightbox() {
@@ -8279,7 +8665,10 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
 
     function openDeployLightbox(button) {
       if (!deployLightbox || !button) return;
-      closeFeatureModal(false);
+      const openedFromFeatureModal = button.classList.contains("feature-architecture-button");
+      if (!openedFromFeatureModal) {
+        closeFeatureModal(false);
+      }
       lastDeployTrigger = button;
       const buttons = deployGalleryButtonsFor(button);
       deployLightboxItems = buttons.map((itemButton) => {
@@ -8300,7 +8689,7 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
     function closeDeployLightbox(restoreFocus = true) {
       if (!deployLightbox || deployLightbox.hidden) return;
       deployLightbox.hidden = true;
-      document.body.classList.remove("modal-open");
+      document.body.classList.toggle("modal-open", Boolean(featureModal && !featureModal.hidden));
       if (restoreFocus) {
         lastDeployTrigger?.focus();
       }
@@ -8441,9 +8830,31 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
       trigger.addEventListener("click", () => openFeatureModal(trigger));
     });
 
+    featureModalTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => setFeatureModalTab(tab.dataset.featureTab));
+      tab.addEventListener("keydown", (event) => {
+        let nextIndex = index;
+        if (event.key === "ArrowRight") {
+          nextIndex = (index + 1) % featureModalTabs.length;
+        } else if (event.key === "ArrowLeft") {
+          nextIndex = (index - 1 + featureModalTabs.length) % featureModalTabs.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = featureModalTabs.length - 1;
+        } else {
+          return;
+        }
+        event.preventDefault();
+        setFeatureModalTab(featureModalTabs[nextIndex].dataset.featureTab, true);
+      });
+    });
+
     featureModal?.querySelectorAll("[data-feature-modal-close]").forEach((control) => {
       control.addEventListener("click", () => closeFeatureModal());
     });
+
+    featureArchitectureButton?.addEventListener("click", () => openDeployLightbox(featureArchitectureButton));
 
     setupDeployLightboxImages();
 
@@ -8494,8 +8905,12 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
       if (event.key === "Escape") {
         const modalWasOpen = featureModal && !featureModal.hidden;
         const deployWasOpen = deployLightbox && !deployLightbox.hidden;
+        if (deployWasOpen) {
+          closeDeployLightbox();
+          searchResults.hidden = true;
+          return;
+        }
         closeFeatureModal();
-        closeDeployLightbox();
         if (!modalWasOpen && !deployWasOpen) {
           setGuideMenu(false);
         }
