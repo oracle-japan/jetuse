@@ -4637,6 +4637,107 @@
       line-height: 1.8;
     }
 
+    .cleanup-guide {
+      margin-top: 30px;
+    }
+
+    .cleanup-guide-header {
+      max-width: 820px;
+      margin-bottom: 20px;
+    }
+
+    .cleanup-guide-header h4 {
+      margin: 0 0 10px;
+      color: #1f2a2d;
+      font-size: clamp(21px, 2.2vw, 27px);
+      line-height: 1.35;
+    }
+
+    .cleanup-guide-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.8;
+    }
+
+    .cleanup-step-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cleanup-step {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.8fr) minmax(360px, 1.2fr);
+      gap: 22px;
+      align-items: start;
+      padding: 22px;
+      background: #fffdf9;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 28px rgba(52, 45, 38, 0.055);
+    }
+
+    .cleanup-step-copy {
+      display: grid;
+      gap: 11px;
+      align-content: start;
+    }
+
+    .cleanup-step-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: #315f4c;
+      background: #e5f0eb;
+      border: 1px solid rgba(95, 151, 160, 0.3);
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .cleanup-step h5 {
+      margin: 0;
+      color: #1f2a2d;
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .cleanup-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .cleanup-step .deploy-shot {
+      width: 100%;
+      margin: 0;
+    }
+
+    .cleanup-step .deploy-shot img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .cleanup-final-note {
+      margin-top: 16px;
+    }
+
+    @media (max-width: 920px) {
+      .cleanup-step {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .cleanup-step {
+        gap: 16px;
+        padding: 16px;
+      }
+    }
+
     .guide-media-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -7922,7 +8023,7 @@
               <div class="docs-nav-group"><span>2. アプリケーション実装</span><a href="#doc-02">フロントエンド</a><a href="#doc-03">バックエンド API</a><a href="#doc-07">ストリーミング応答</a><a href="#doc-08">会話履歴と永続化</a></div>
               <div class="docs-nav-group"><span>3. AI・データ機能</span><a href="#doc-06">LLMとモデル管理</a><a href="#doc-09">RAG</a><a href="#doc-10">DB Chat</a><a href="#doc-11">エージェント</a><a href="#doc-12">音声・翻訳・動画・OCR</a></div>
               <div class="docs-nav-group"><span>4. OCI基盤・認証・セキュリティ</span><a href="#doc-04">OCI基盤</a><a href="#doc-05">認証・認可</a><a href="#doc-16">環境変数・設定</a><a href="#doc-13">セキュリティ</a></div>
-              <div class="docs-nav-group"><span>5. 開発・運用・制約</span><a href="#doc-14">運用・障害対応</a><a href="#doc-15">ビルド・デプロイ・開発</a><a href="#doc-17">テストと更新確認</a><a href="#doc-18">未実装・要確認</a></div>
+              <div class="docs-nav-group"><span>5. 開発・運用・制約</span><a href="#doc-14">運用・障害対応</a><a href="#doc-15">ビルド・デプロイ・開発</a><a href="#doc-17">テストと更新確認</a></div>
             </aside>
             <div class="docs-main">
               <header class="docs-hero"><span class="meta">Technical Documentation</span><h2>JetUse 技術詳細ドキュメント</h2><p>このページは、JetUseの構成・実装・運用を確認する技術者向け資料です。デプロイや画面操作は初心者向けページに分け、ここではコンポーネントの責務、設定、データ経路、認証、RAG、運用上の制約を扱います。</p></header>
@@ -8054,7 +8155,7 @@
                 </section>
                 </section>
                 <section class="doc-chapter" id="doc-chapter-operations">
-                  <header class="doc-chapter-header"><span class="doc-chapter-number">05</span><div><h3>開発・運用・制約</h3><p>日常運用、ローカル開発、検証項目、確認が必要な制約をまとめます。</p></div></header>
+                  <header class="doc-chapter-header"><span class="doc-chapter-number">05</span><div><h3>開発・運用・制約</h3><p>日常運用、ローカル開発、テストと更新時の確認をまとめます。</p></div></header>
                   <section class="doc-section" id="doc-14">
                   <span class="doc-status">運用確認</span>
                   <h3>運用・トラブルシュート</h3>
@@ -8079,13 +8180,6 @@ npm run dev</code></pre><p>Viteは <code>/api</code> を <code>http://localhost:
                   <h3>テストとドキュメント更新時の確認</h3>
                   <p>APIはpytest + ruff、WebはVitest + ESLint + TypeScript build、Terraformはfmt / validateで確認します。APIテストにはチャット、RAG、会話、キャンセル、エージェント、Guardrails、DB unavailable、NL2SQL、議事録、STT、OCR、翻訳、Functions routerなどが含まれます。</p><p>ドキュメントだけを更新する場合は、見出し階層、目次アンカー、公式リンク、横長表のスクロール、モバイル表示を確認します。また、<code>packages/jetuse_shared</code>、<code>/config.json</code>、<code>infra/orm</code>、ADB bootstrap、公開GHCR image、SPA distの説明が古い構成に戻っていないかを確認します。</p>
                   <div class="doc-meta-block"><strong>主な関連ファイル</strong><span><code>.github/workflows/</code>、<code>packages/api/tests/</code>、<code>packages/web/src/**/*.test.*</code></span></div>
-                </section>
-                  <section class="doc-section" id="doc-18">
-                  <span class="doc-status pending">未実装・要確認</span>
-                  <h3>不明点・未実装・要確認事項</h3>
-                  <p class="doc-summary">ここでは、実装済み、未実装、要確認を混同しやすい項目をまとめます。実機確認では、コード、Terraform、アーキテクチャ資料、運用ナレッジを優先して判断します。</p>
-                  <ul><li><strong>未実装:</strong> 画像生成・動画生成。画像入力、動画フレーム分析、OCRは実装済みです。</li><li><strong>未実装:</strong> Agents Knowledge BaseをJetUseのRAG backendとして利用する経路。</li><li><strong>要確認:</strong> Project側のlong-term memory設定。コードは <code>memory_subject_id</code> をmetadataへ入れますが、実際の有効化状態は外部設定に依存します。</li><li><strong>未実装:</strong> グループclaim / アプリロールによる細かなRBAC。管理者判定は <code>ADMIN_USERS</code> のsub/emailです。</li><li><strong>未実装:</strong> 認証付きMCPサーバー登録、保存済みHosted AgentのMCPと <code>code_interpreter</code> 対応。</li><li><strong>要確認:</strong> OpenSearchの有効化状態と常設コスト。既定は <code>enable_opensearch=false</code> です。</li><li><strong>要確認:</strong> 資料間でパスや手順が異なる場合は、コード、Terraform、アーキテクチャ資料を優先してください。</li></ul>
-                  <div class="doc-meta-block"><strong>主な関連ファイル</strong><span><code>packages/web/src/</code>、<code>packages/api/</code>、<code>packages/agent-containers/</code>、<code>infra/</code></span></div><details class="doc-reference-details"><summary>調査で参照した主要領域</summary><p><code>packages/web/src/</code>、<code>packages/api/service/</code>、<code>packages/api/jetuse_core/</code>、<code>packages/jetuse_shared/</code>、<code>packages/agent-containers/</code>、<code>infra/terraform/</code>、<code>infra/orm/</code>、<code>ops/</code>、<code>docs/</code></p></details>
                 </section>
                 </section></div>
             </div>
@@ -8366,7 +8460,7 @@ Allow group &lt;group-name&gt; to read objectstorage-namespaces in tenancy</code
                             <h5>OCIRネームスペースを確認する</h5><p>通常はOCIテナンシのObject Storage namespaceと同じ値です。自動入力されている場合は、基本的にそのまま使います。誤った値を指定すると、コンテナイメージの参照やデプロイに失敗する可能性があります。</p>
                             <h5>OCIRリージョンキーを入力する</h5><p>利用するリージョンのキーを指定します。<code>ap-osaka-1</code>のリージョンキーは<code>kix</code>です。</p>
                             <h5>OCIRイメージリポジトリのプレフィックスを確認する</h5><p>特別な理由がなければ初期値のままにします。APIとFunctionsルーター用のイメージ名の接頭辞で、<code>release.yml</code>などのCI/CD設定からpushするリポジトリ名と一致させる必要があります。不一致の場合、スタックが別のイメージを参照してデプロイに失敗する可能性があります。</p>
-                            <h5>コンテナイメージの上書き設定を確認する</h5><p>「APIコンテナイメージ（上書き）」と「Functionsルーターイメージ（上書き）」は通常空欄にします。空欄の場合は、<code>kix.ocir.io/&lt;namespace&gt;/&lt;prefix&gt;-api:latest</code>と<code>kix.ocir.io/&lt;namespace&gt;/&lt;prefix&gt;-fn-router:latest</code>の形式で自動生成されます。既存イメージを使う場合だけ入力し、誤ったパスを指定しないようにします。</p>
+                            <h5>コンテナイメージの上書き設定を確認する</h5><p>「APIコンテナイメージ（上書き）」と「Functionsルーターイメージ（上書き）」は通常空欄にします。空欄の場合は、<code>kix.ocir.io/{確認したnamespace}/{指定したprefix}-api:latest</code>と<code>kix.ocir.io/{確認したnamespace}/{指定したprefix}-fn-router:latest</code>の形式で自動生成されます。ここで「指定したprefix」は、「OCIRイメージリポジトリのプレフィックス」に設定した値です。既存イメージを使う場合だけ入力し、誤ったパスを指定しないようにします。</p>
                           </div></details>
                         </div>
                         <figure class="deploy-shot"><img src="assets/deploy-09-next.png" alt="IAM、OpenSearch、APIレート上限、OCIRを設定する詳細オプション画面" width="1920" height="1418" loading="lazy"><figcaption>詳細オプションを確認して「Next」へ進む</figcaption></figure>
@@ -8485,15 +8579,16 @@ Allow group &lt;group-name&gt; to read objectstorage-namespaces in tenancy</code
                 <p class="governance-pause-summary">JetUseを作り直さずに費用を抑えたい場合は、アプリを実行するContainer InstanceとAutonomous AI Databaseをセットで停止します。再開するときは逆の順番で起動します。</p>
 
                 <h4>停止で課金を抑えられるリソース</h4>
+                <p>リソース名は、デプロイ時に指定したPrefixの後ろへ、リソースの種類を示す文字列が付く形式です。たとえばPrefixを<code>jetuse</code>にした場合、Container Instanceは<code>jetuse-api</code>、Autonomous AI Databaseは<code>jetuse-adb</code>になります。</p>
                 <div class="manage-grid pause-resource-grid">
                   <div class="manage-card">
-                    <span class="pause-resource-name">&lt;prefix&gt;-api</span>
+                    <span class="pause-resource-name">指定したPrefix +「-api」</span>
                     <h3>Container Instance</h3>
                     <p>停止して状態が<code>Inactive</code>になると、標準シェイプのコンピュート課金が止まります。一時ストレージ上のデータは失われるため、アップロードや生成処理が動いていないことを確認してから停止します。</p>
                     <a class="governance-source-link" href="https://docs.oracle.com/en-us/iaas/Content/container-instances/stopping-a-container-instance.htm" target="_blank" rel="noopener noreferrer">OCI公式ドキュメント</a>
                   </div>
                   <div class="manage-card">
-                    <span class="pause-resource-name">&lt;prefix&gt;-adb</span>
+                    <span class="pause-resource-name">指定したPrefix +「-adb」</span>
                     <h3>Autonomous AI Database</h3>
                     <p>停止中はECPU使用量がゼロになります。データベースの保存領域とバックアップの保存領域に対する費用は継続します。</p>
                     <a class="governance-source-link" href="https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-features-billing.html" target="_blank" rel="noopener noreferrer">OCI公式ドキュメント</a>
@@ -8511,9 +8606,9 @@ Allow group &lt;group-name&gt; to read objectstorage-namespaces in tenancy</code
                     <h3>停止する手順</h3>
                     <ol>
                       <li>チャット、RAGファイル処理、議事録生成など、実行中の処理がないことを確認します。</li>
-                      <li>OCI ConsoleでContainer Instancesを開き、<code>&lt;prefix&gt;-api</code>を選択します。</li>
+                      <li>OCI ConsoleでContainer Instancesを開き、指定したPrefixに<code>-api</code>を付けたリソース（例: <code>jetuse-api</code>）を選択します。</li>
                       <li>「アクション」から「停止」を実行し、状態が<code>Inactive</code>になるまで待ちます。</li>
-                      <li>Autonomous AI Databaseを開き、<code>&lt;prefix&gt;-adb</code>を選択します。</li>
+                      <li>Autonomous AI Databaseを開き、指定したPrefixに<code>-adb</code>を付けたリソース（例: <code>jetuse-adb</code>）を選択します。</li>
                       <li>「その他のアクション」から「停止」を実行し、状態が<code>Stopped</code>になるまで待ちます。</li>
                     </ol>
                   </div>
@@ -8568,19 +8663,71 @@ Allow group &lt;group-name&gt; to read objectstorage-namespaces in tenancy</code
                 <p>まずStackをDestroyし、その後にデータやログの残りを確認します。検証用コンパートメントを使うと削除範囲が分かりやすくなります。</p>
               </div>
               <div class="manage-grid">
-                <div class="manage-card warning"><h3>Resource Manager Stack</h3><p>試用が終わったら、作成したStackをDestroyします。失敗した場合はエラー内容を確認し、残ったリソースを個別に確認します。</p></div>
+                <div class="manage-card warning"><h3>Resource Manager Stack</h3><p>試用が終わったら、下の手順でデプロイに使用したStackを破棄します。破棄ジョブが失敗した場合はエラー内容を確認し、残ったリソースを個別に確認します。</p></div>
                 <div class="manage-card warning"><h3>Object Storage</h3><p>RAGファイル、音声ファイル、静的配信バケット、生成データが残っていないか確認します。</p></div>
                 <div class="manage-card warning"><h3>ADBとログ</h3><p>会話履歴、議事録、エージェント定義、監査ログ、サービスログが不要であれば削除対象に含めます。</p></div>
                 <div class="manage-card warning"><h3>本番化は別設計</h3><p>監査、バックアップ、保存期間、可用性、アクセス制御は、本番要件に合わせて別途設計します。</p></div>
               </div>
-              <div class="guide-media-grid" aria-label="削除確認画面の画像枠">
-                <div class="guide-media-frame is-placeholder" role="note">
-                  <span>スクリーンショット準備中：Resource Manager Destroy実行画面</span>
+              <section class="cleanup-guide" aria-labelledby="cleanup-stack-title">
+                <header class="cleanup-guide-header">
+                  <h4 id="cleanup-stack-title">Resource Managerでスタックを破棄する</h4>
+                  <p>デプロイに使用したコンパートメントとスタックを選び、Resource Managerから破棄ジョブを実行します。画面上の「削除」ではなく、作成済みリソースを片付ける「破棄」を選びます。</p>
+                </header>
+                <div class="cleanup-step-list">
+                  <article class="cleanup-step">
+                    <div class="cleanup-step-copy">
+                      <span class="cleanup-step-number">1</span>
+                      <h5>Resource Managerの「スタック」を開く</h5>
+                      <p>OCI Consoleのナビゲーションメニューを開き、「開発者サービス」から「リソース・マネージャ」の「スタック」を選択します。</p>
+                    </div>
+                    <figure class="deploy-shot">
+                      <img src="assets/deploy-cleanup-01-open-stacks.png" alt="OCI Consoleの開発者サービスからResource Managerのスタックを選択する画面" width="1116" height="556" loading="lazy">
+                      <figcaption>「開発者サービス」→「リソース・マネージャ」→「スタック」を開く</figcaption>
+                    </figure>
+                  </article>
+
+                  <article class="cleanup-step">
+                    <div class="cleanup-step-copy">
+                      <span class="cleanup-step-number">2</span>
+                      <h5>デプロイに使用したスタックを選ぶ</h5>
+                      <p>スタック一覧で、デプロイ時に選択したコンパートメントを指定します。JetUseのデプロイに使用したスタック名をクリックします。</p>
+                      <p>スタック名は、たとえば<code>main.zip-2026...</code>や<code>jetuse-orm.zip-...</code>のような形式です。名前だけで判断できない場合は、説明に「JetUse」や「生成AIアプリ」と記載され、状態が「アクティブ」になっていることも確認してください。</p>
+                    </div>
+                    <figure class="deploy-shot">
+                      <img src="assets/deploy-cleanup-02-select-stack.png" alt="Resource Managerのスタック一覧でJetUseのスタックを選択する画面" width="1271" height="396" loading="lazy">
+                      <figcaption>デプロイ時のコンパートメントを選び、JetUseのスタック名を開く</figcaption>
+                    </figure>
+                  </article>
+
+                  <article class="cleanup-step">
+                    <div class="cleanup-step-copy">
+                      <span class="cleanup-step-number">3</span>
+                      <h5>「アクション」から「破棄」を選ぶ</h5>
+                      <p>スタックの詳細画面で右上の「アクション」を開き、「破棄」をクリックします。「削除」はスタック情報を削除する別の操作なので、ここでは選びません。</p>
+                    </div>
+                    <figure class="deploy-shot">
+                      <img src="assets/deploy-cleanup-03-destroy-action.png" alt="JetUseのスタック詳細画面でアクションメニューから破棄を選択する画面" width="1058" height="491" loading="lazy">
+                      <figcaption>「アクション」メニューから「破棄」を選択する</figcaption>
+                    </figure>
+                  </article>
+
+                  <article class="cleanup-step">
+                    <div class="cleanup-step-copy">
+                      <span class="cleanup-step-number">4</span>
+                      <h5>確認画面でもう一度「破棄」を押す</h5>
+                      <p>破棄画面でジョブ名と警告内容を確認し、右下の「破棄」をクリックします。破棄ジョブが作成されたら、状態が「成功」になるまで待ちます。</p>
+                    </div>
+                    <figure class="deploy-shot">
+                      <img src="assets/deploy-cleanup-04-confirm-destroy.png" alt="Resource Managerの破棄確認画面で破棄ボタンを押す画面" width="1005" height="515" loading="lazy">
+                      <figcaption>警告を確認し、右下の「破棄」をクリックする</figcaption>
+                    </figure>
+                  </article>
                 </div>
-                <div class="guide-media-frame is-placeholder" role="note">
-                  <span>スクリーンショット準備中：Object StorageとADBの残存確認画面</span>
+                <div class="note cleanup-final-note" role="note">
+                  <strong>破棄は元に戻せません</strong>
+                  <p>必要なデータを保存してから実行してください。破棄ジョブが成功した後は、Object Storage、Autonomous AI Database、ログなどに残存リソースがないか、上の削除対象に沿って確認します。</p>
                 </div>
-              </div>
+              </section>
               <div class="guide-next">
                 <a class="next-card" href="#faq"><span class="next-icon">FAQ</span><div><h3>FAQを見る</h3><p>権限、費用、OpenSearch、データ、本番利用などの判断を確認します。</p></div></a>
                 <a class="next-card" href="#docs"><span class="next-icon">Docs</span><div><h3>技術ドキュメントを見る</h3><p>リソース構成、認証、データ経路、運用上の制約を確認します。</p></div></a>
@@ -9296,6 +9443,7 @@ Allow group &lt;group-name&gt; to read objectstorage-namespaces in tenancy</code
         button.closest(".feature-modal-architecture") ||
         button.closest(".deploy-gallery") ||
         button.closest(".guide-media-grid") ||
+        button.closest(".cleanup-step-list") ||
         button.closest(".deploy-stage-body") ||
         button.parentElement;
       return Array.from(container.querySelectorAll(".deploy-image-button, .feature-architecture-button"));
