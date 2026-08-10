@@ -6,6 +6,8 @@ JetUse（ジェットユース）は、OCI の Data & AI / 生成AIサービス�
 
 https://oracle-japan.github.io/jetuse/
 
+デプロイ手順もこちらのサイトで紹介しています。
+
 ## 主な機能
 
 - OCI Generative AI を使ったチャット
